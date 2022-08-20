@@ -4,39 +4,64 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class MyGdxGame extends ApplicationAdapter {
 	SpriteBatch batch;
-	Texture img;
-	int click;
-	
+	Anim animation;
+	boolean dir;
+	float x;
+	float y;
+	float speed = 5;
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("cat.png");
+		animation = new Anim("mesomorph.png", 9, 6, Animation.PlayMode.LOOP);
 	}
 
 	@Override
 	public void render () {
 		ScreenUtils.clear(0, 0.5f, 0.5f, 1);
 
-		float x = Gdx.input.getX() - img.getWidth() / 2;
-		float y = Gdx.graphics.getHeight() - Gdx.input.getY() - img.getHeight() / 2;
+		animation.setTime(Gdx.graphics.getDeltaTime());
 
-		if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) click++;
+		if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
+			dir = true;
+		}
+		if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
+			dir = false;
+		}
 
-		Gdx.graphics.setTitle("Clicked " + click + " times");
+		x = x + speed;
+
+		if (animation.getFrame().isFlipX() && !dir) {
+			animation.getFrame().flip(true, false);
+			speed = 5;
+		}
+		if (!animation.getFrame().isFlipX() && dir) {
+			animation.getFrame().flip(true, false);
+			speed = -5;
+		}
+
+		if (x > Gdx.graphics.getWidth() - animation.getFrame().getRegionWidth()) {
+			dir = true;
+		}
+		if (x < 0) {
+			dir = false;
+		}
 
 		batch.begin();
-		batch.draw(img, x, y);
+		batch.draw(animation.getFrame(), x, y);
 		batch.end();
 	}
 	
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
+		animation.dispose();
 	}
 }
