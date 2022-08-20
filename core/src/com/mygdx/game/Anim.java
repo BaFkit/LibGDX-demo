@@ -10,7 +10,7 @@ public class Anim {
     private Animation<TextureRegion> anm;
     private float time;
 
-    public Anim(String name, int col, int row, Animation.PlayMode playMode) {
+    public Anim(String name, int col, int row, Animation.PlayMode playMode, int... numb) {
         img = new Texture(name);
         TextureRegion region0 = new TextureRegion(img);
 
@@ -19,17 +19,26 @@ public class Anim {
 
         TextureRegion[][] regions = region0.split(xCnt, yCnt);
 
-//        TextureRegion[] region1 = new TextureRegion[regions0.length * regions0[0].length];
-//
-//        for (int i = 0, cnt = 0; i < regions0.length; i++) {
-//            for (int j = 0; j < regions0[0].length; j++) {
-//                region1[cnt++] = regions0[i][j];
-//            }
+        TextureRegion[] regionsInRow = new TextureRegion[regions.length * regions[0].length];
+
+        for (int i = 0, cnt = 0; i < regions.length; i++) {
+            for (int j = 0; j < regions[0].length; j++) {
+                regionsInRow[cnt++] = regions[i][j];
+            }
+        }
+
+        for (int i = 0; i < numb.length; i++) {
+            numb[i] -= 1;
+        }
+
+//        TextureRegion[] regionSelected = new TextureRegion[3];
+//        for (int i = 6, cnt = 0; i <= 8; i++) {
+//            regionSelected[cnt++] = regions[0][i];
 //        }
 
-        TextureRegion[] regionSelected = new TextureRegion[3];
-        for (int i = 6, cnt = 0; i <= 8; i++) {
-            regionSelected[cnt++] = regions[0][i];
+        TextureRegion[] regionSelected = new TextureRegion[numb.length];
+        for (int i = 0, cnt = 0; i < numb.length; i++) {
+            regionSelected[cnt++] = regionsInRow[numb[i]];
         }
 
         anm = new Animation<TextureRegion>(1/5f, regionSelected);
