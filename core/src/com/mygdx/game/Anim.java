@@ -3,15 +3,17 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Anim {
     private Texture img;
+    private TextureAtlas atlas;
     private Animation<TextureRegion> anm;
     private float time;
 
-    public Anim(String name, int col, int row, Animation.PlayMode playMode, int... numb) {
-        img = new Texture(name);
+    public Anim(String texture, int col, int row, Animation.PlayMode playMode, int... numb) {
+        img = new Texture(texture);
         TextureRegion region0 = new TextureRegion(img);
 
         int xCnt = region0.getRegionWidth() / col;
@@ -31,11 +33,6 @@ public class Anim {
             numb[i] -= 1;
         }
 
-//        TextureRegion[] regionSelected = new TextureRegion[3];
-//        for (int i = 6, cnt = 0; i <= 8; i++) {
-//            regionSelected[cnt++] = regions[0][i];
-//        }
-
         TextureRegion[] regionSelected = new TextureRegion[numb.length];
         for (int i = 0, cnt = 0; i < numb.length; i++) {
             regionSelected[cnt++] = regionsInRow[numb[i]];
@@ -43,7 +40,14 @@ public class Anim {
 
         anm = new Animation<TextureRegion>(1/5f, regionSelected);
         anm.setPlayMode(playMode);
+        time += Gdx.graphics.getDeltaTime();
+    }
 
+    public Anim(String atlasName, Animation.PlayMode playMode) {
+        atlas = new TextureAtlas(atlasName);
+        anm = new Animation<TextureRegion>(1/5f, atlas.findRegions("run"));
+        //anm = new Animation<TextureRegion>(1/5f, atlas.findRegions("jump"));
+        anm.setPlayMode(playMode);
         time += Gdx.graphics.getDeltaTime();
     }
 
@@ -54,6 +58,7 @@ public class Anim {
     public void setPlayMode(Animation.PlayMode playMode) {anm.setPlayMode(playMode);}
 
     public void dispose() {
-        img.dispose();
+        if (img != null) img.dispose();
+        if (atlas !=null) atlas.dispose();
     }
 }
