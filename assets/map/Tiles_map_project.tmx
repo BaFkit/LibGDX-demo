@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" width="64" height="36" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="3">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" width="64" height="36" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="4">
  <tileset firstgid="1" name="map_tiles" tilewidth="16" tileheight="16" spacing="2" margin="2" tilecount="1350" columns="54">
   <image source="map_tiles.png" trans="b0e0f8" width="982" height="452"/>
   <tile id="637">
@@ -18,6 +18,7 @@
   <object id="1" name="Камера" x="556.237" y="439.981">
    <point/>
   </object>
+  <object id="3" name="Граница" x="2.68281" y="0.894271" width="1023.05" height="576.805"/>
  </objectgroup>
  <layer id="1" name="Основной план" width="64" height="36">
   <data encoding="base64" compression="zlib">
