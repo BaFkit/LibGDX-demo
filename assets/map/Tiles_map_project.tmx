@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" width="64" height="36" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="4">
+ <tileset firstgid="1" name="map_tiles" tilewidth="16" tileheight="16" spacing="2" margin="2" tilecount="1350" columns="54">
+  <image source="map_tiles.png" trans="b0e0f8" width="982" height="452"/>
+  <tile id="637">
+   <animation>
+    <frame tileid="1100" duration="1000"/>
+    <frame tileid="1099" duration="100"/>
+   </animation>
+  </tile>
+ </tileset>
+ <layer id="2" name="Фон" width="64" height="36">
+  <data encoding="base64" compression="zlib">
+   eJzt00sKgCAUBVCx5ZRbbDXtoA1GNGhiVJR9z4MDDgTvFW1CCA0AAAAAAAC/lBbcnSuXr+QZufVTlM6kv/76f6f/1qnj5C2zN2sbZ0uTjkW6dMasfbW+b89b6eL7nPWv7u5R6g4G0zOlFw==
+  </data>
+ </layer>
+ <objectgroup id="3" name="Объекты" offsetx="-1.78854" offsety="-0.894271">
+  <object id="1" name="Камера" x="556.237" y="439.981">
+   <point/>
+  </object>
+  <object id="3" name="Граница" x="2.68281" y="0.894271" width="1023.05" height="576.805"/>
+ </objectgroup>
+ <layer id="1" name="Основной план" width="64" height="36">
+  <data encoding="base64" compression="zlib">
+   eJztlm9Kw0AQxaeJ0Cto9QbWL7bW3kLrPVroBSR30Rt4jkDtbfzWJ3RkKdtlB/bPxM4PHi0hefveZhJCZFwyk5boFrpr/cclYg/fta5/jHfIS5onlOkVWkFvJ/35uETs4bvW9Y/xDnlJ88RkMoznEdFyVDtFPdbovknQf6j7+IHMn57c0j6SfcyxV6k9pXNxbh9TeNfwlPTR4J0zr0vp51zbeyXH7OZcL/X+lZqzVOuVvl/aKH2/DMMwDMMw/iM7fE99Q/sL/q4aN7UT1EVTf57HEmvwzGvq/0uJPO4a1l/Xe7DW/dcyBzly9I54jXen909Tpn9/okesOYPm0BO0OObowzZ/3OPcaYR2LeYb2g9AyNkhb8fdfL/8/4Hi9QXPlysi1rUC3UATJxMLWaM6xbJtqBOcroZtgmdyqN2Z0B4cAEiad/Y=
+  </data>
+ </layer>
+</map>
