@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" width="64" height="36" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="12">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="14">
  <tileset firstgid="1" name="map_tiles" tilewidth="16" tileheight="16" spacing="2" margin="2" tilecount="1350" columns="54">
   <image source="map_tiles.png" trans="b0e0f8" width="982" height="452"/>
   <tile id="637">
@@ -9,9 +9,9 @@
    </animation>
   </tile>
  </tileset>
- <layer id="2" name="Фон" width="64" height="36">
+ <layer id="2" name="Фон" width="64" height="48">
   <data encoding="base64" compression="zlib">
-   eJzt00sKgCAUBVCx5ZRbbDXtoA1GNGhiVJR9z4MDDgTvFW1CCA0AAAAAAAC/lBbcnSuXr+QZufVTlM6kv/76f6f/1qnj5C2zN2sbZ0uTjkW6dMasfbW+b89b6eL7nPWv7u5R6g4G0zOlFw==
+   eJztz0ENACAMALFlwQ12eM6/DhzsD2uTE3ARAAAAAAAAAABv2zm7Wuo6n+ffv3///v379+/fv/85/xfhbUSQ
   </data>
  </layer>
  <objectgroup id="3" name="Объекты" offsetx="-1.78854" offsety="-0.894271">
@@ -47,24 +47,31 @@
     <property name="restitution" type="float" value="0"/>
    </properties>
   </object>
+  <object id="12" name="Chest" x="392.789" y="469.894" width="41" height="40">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="5" name="Setting">
   <object id="10" name="Hero" x="488.272" y="435.51" width="28.6167" height="37.5594">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
     <property name="gravityScale" type="float" value="20"/>
-    <property name="restitution" type="float" value="0.5"/>
+    <property name="restitution" type="float" value="0.1"/>
    </properties>
   </object>
  </objectgroup>
- <layer id="1" name="Слой 2" width="64" height="36">
+ <layer id="1" name="Слой 2" width="64" height="48">
   <data encoding="base64" compression="zlib">
-   eJztWG1Kw0AQnSaCV9DWG6i//LxF1Wuohej/krsoaH/3HIW2/lbP4T8f4sAQ1nQXdicbOw8eCSF5897sZAkhMmwzhiXRCDwo3ddDyBquZ6W+j3abVqifNk9X4DV408jP10PIGq5npb6PdptWqB8fTwbDxYDoctC1i+5wj+yTCPn72scneH52+A7NE9LHFL2KrRk6F3/1MYZ2F5oheXLQTulXQvs9z21fSTG7KevF7p/WnMWqp71euUF7vQwGg8FgMBj+I5b4nlqB6y3+rtot9GrdlkR3npwo/d/VzF8h04PgYyOjxjw2a2jmf0HeV8GZY401/MgamvnfkfdD8DOT/HIm3gRjY9P8N72lgmv9+Zgyf1fzvxDkGlOR+6vQye+a/xPUPQXPwPNfH4vNUj84xL1HHlyizgpc94DwWcNvzdlcRz4/Jn/OoTneIWLuZcB9cCg8MeHVK5MvqoLqgNuzQRVhL+hrdkZbD74BWjiWFA==
+   eJztmF1KA0EQhDvZB++g3sLfYxivoQbUd8ldFNTDLOTnOXoO36wHBxppJ9vQM7tr6oMisGRqqmY6IUSE7DOHjcgRdNzYzz1KHtZa7d/FO+flzZPLdAXNoOtf/dNzj5KHtVb7d/HOeXnzdMlEyMVE5HLSd4r+uEP3eUD/sZ7jMzK/GLm9fTznWOKsoj29c/HXOUZ49+Hp6TME75J5NbU/50P7XikxuyX3iz6/WnMWtV/t+xoate+LEEIIIeQ/ssTvqRW03uPfVQfTenvdNCK3HTWv9P9uZP9d83SPTg9Kj41vfYmM0fef83tF3zeld+OOa8yj3qNUf+sut+j7ofQ5kP4660Ypwluza/6tNSWwMqbXkv37mv9WKe3xpHp/TfP9W4dy/a35P8F7TqEz6PwnRyuxLLHPClqPQMi5QN5F8BEQQgghhBBCCCGj5Ru295Jb
   </data>
  </layer>
- <layer id="4" name="Слой 3" width="64" height="36">
+ <layer id="4" name="Слой 3" width="64" height="48">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAIBXAyQAAAE=
+   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAIB3AzAAAAE=
   </data>
  </layer>
 </map>
