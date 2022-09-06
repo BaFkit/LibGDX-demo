@@ -23,7 +23,6 @@ import com.mygdx.game.Main;
 import com.mygdx.game.PhysX;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 
 public class GameScreen implements Screen {
@@ -55,7 +54,7 @@ public class GameScreen implements Screen {
         //animation = new Anim("mesomorph.png", 9, 6, Animation.PlayMode.LOOP, 7,8,9);
         animation = new Anim("atlas/unnamed.atlas", Animation.PlayMode.LOOP);
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.zoom = 0.5f;
+        camera.zoom = 0.8f;
         music = Gdx.audio.newMusic(Gdx.files.internal("back_music.mp3"));
         music.setLooping(true);
         music.setVolume(0.5f);
