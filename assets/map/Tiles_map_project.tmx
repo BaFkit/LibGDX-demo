@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" width="64" height="43" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="15">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" width="64" height="36" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="12">
  <tileset firstgid="1" name="map_tiles" tilewidth="16" tileheight="16" spacing="2" margin="2" tilecount="1350" columns="54">
   <image source="map_tiles.png" trans="b0e0f8" width="982" height="452"/>
   <tile id="637">
@@ -8,15 +8,10 @@
     <frame tileid="1099" duration="100"/>
    </animation>
   </tile>
-  <tile id="1316">
-   <properties>
-    <property name="Color" type="color" value="#ffb0e0f8"/>
-   </properties>
-  </tile>
  </tileset>
- <layer id="2" name="Фон" width="64" height="43">
+ <layer id="2" name="Фон" width="64" height="36">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAAAA4McAKwAAAQ==
+   eJzt00sKgCAUBVCx5ZRbbDXtoA1GNGhiVJR9z4MDDgTvFW1CCA0AAAAAAAC/lBbcnSuXr+QZufVTlM6kv/76f6f/1qnj5C2zN2sbZ0uTjkW6dMasfbW+b89b6eL7nPWv7u5R6g4G0zOlFw==
   </data>
  </layer>
  <objectgroup id="3" name="Объекты" offsetx="-1.78854" offsety="-0.894271">
@@ -52,38 +47,24 @@
     <property name="restitution" type="float" value="0"/>
    </properties>
   </object>
-  <object id="14" name="Chest" x="386.266" y="479.144" width="29.7125" height="31.501">
-   <properties>
-    <property name="BodyType" value="StaticBody"/>
-    <property name="gravityScale" type="float" value="1"/>
-    <property name="restitution" type="float" value="0"/>
-   </properties>
-  </object>
-  <object id="14" name="Chest" x="386.266" y="479.144" width="29.7125" height="31.501">
-   <properties>
-    <property name="BodyType" value="StaticBody"/>
-    <property name="gravityScale" type="float" value="1"/>
-    <property name="restitution" type="float" value="0"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="5" name="Setting">
   <object id="10" name="Hero" x="488.272" y="435.51" width="28.6167" height="37.5594">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
     <property name="gravityScale" type="float" value="20"/>
-    <property name="restitution" type="float" value="0"/>
+    <property name="restitution" type="float" value="0.5"/>
    </properties>
   </object>
  </objectgroup>
- <layer id="1" name="Слой 2" width="64" height="43">
+ <layer id="1" name="Слой 2" width="64" height="36">
   <data encoding="base64" compression="zlib">
-   eJztmE1KA0EUhDszAe+g3sBlNHoMI95CE1D3krskoB4mkJ+1eg531qbx0XSGfth/yVTBtxlmaqped8LQxlB91mlrzBk4b/3XNVgP37PSP8S7y0ubpyvTLZiAO6e/va7Bevielf4h3l1e2jwhmSjqemDMzaB0inKaovssQv9DneMCmZee3No+mjmmmFVsT+2+2DfHGN4lPDV9avBOmVcq9++8tv+VFHs35ftizy/XPov1vtzrVZtyrxdFURRFUdQxao3vqQ3Y9vi76qRJ4+ub7UNrzGMgs0znu6n6+7yf0OlZ8FLgDNtdl9j9pb/r/Ya+74KPQmf4MleK9beervcn+n4JvivpL9dsJ/ivf437383lZk3Zv9T+XwlsrleR8afR9191oNn/I9xzCa7AuPnzjqk13rMB2wMAOefIOw/pddH0m/shIYQQQki/+AUnSV3l
+   eJztWG1Kw0AQnSaCV9DWG6i//LxF1Wuohej/krsoaH/3HIW2/lbP4T8f4sAQ1nQXdicbOw8eCSF5897sZAkhMmwzhiXRCDwo3ddDyBquZ6W+j3abVqifNk9X4DV408jP10PIGq5npb6PdptWqB8fTwbDxYDoctC1i+5wj+yTCPn72scneH52+A7NE9LHFL2KrRk6F3/1MYZ2F5oheXLQTulXQvs9z21fSTG7KevF7p/WnMWqp71euUF7vQwGg8FgMBj+I5b4nlqB6y3+rtot9GrdlkR3npwo/d/VzF8h04PgYyOjxjw2a2jmf0HeV8GZY401/MgamvnfkfdD8DOT/HIm3gRjY9P8N72lgmv9+Zgyf1fzvxDkGlOR+6vQye+a/xPUPQXPwPNfH4vNUj84xL1HHlyizgpc94DwWcNvzdlcRz4/Jn/OoTneIWLuZcB9cCg8MeHVK5MvqoLqgNuzQRVhL+hrdkZbD74BWjiWFA==
   </data>
  </layer>
- <layer id="4" name="Слой 3" width="64" height="43">
+ <layer id="4" name="Слой 3" width="64" height="36">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAAAA4McAKwAAAQ==
+   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAIBXAyQAAAE=
   </data>
  </layer>
 </map>
