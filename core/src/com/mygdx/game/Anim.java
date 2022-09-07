@@ -43,10 +43,9 @@ public class Anim {
         time += Gdx.graphics.getDeltaTime();
     }
 
-    public Anim(String atlasName, Animation.PlayMode playMode) {
+    public Anim(String atlasName, String animName, Float frameDuration, Animation.PlayMode playMode) {
         atlas = new TextureAtlas(atlasName);
-        anm = new Animation<TextureRegion>(1/5f, atlas.findRegions("run"));
-        //anm = new Animation<TextureRegion>(1/5f, atlas.findRegions("jump"));
+        anm = new Animation<TextureRegion>(frameDuration, atlas.findRegions(animName));
         anm.setPlayMode(playMode);
         time += Gdx.graphics.getDeltaTime();
     }
