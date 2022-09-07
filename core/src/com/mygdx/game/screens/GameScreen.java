@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
@@ -29,6 +30,9 @@ public class GameScreen implements Screen {
     private final Main game;
     private final SpriteBatch batch;
     Anim animation;
+    Anim animationStand;
+    Anim animationRun;
+    Anim animationJump;
     private OrthographicCamera camera;
     private TiledMap map;
     private OrthogonalTiledMapRenderer mapRenderer;
@@ -46,13 +50,19 @@ public class GameScreen implements Screen {
     float x;
     float y;
 
+    private boolean lookRight = true;
+
     public GameScreen(Main game) {
         bodies = new ArrayList<>();
         this.game = game;
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
-        //animation = new Anim("mesomorph.png", 9, 6, Animation.PlayMode.LOOP, 7,8,9);
-        animation = new Anim("atlas/unnamed.atlas", Animation.PlayMode.LOOP);
+
+        animationStand = new Anim("atlas/Atlas.atlas", "stand", 1/5f, Animation.PlayMode.LOOP);
+        animationRun = new Anim("atlas/Atlas.atlas", "run", 1/5f, Animation.PlayMode.LOOP);
+        animationJump = new Anim("atlas/Atlas.atlas", "jump", 0.5f,Animation.PlayMode.NORMAL);
+        animation = animationStand;
+
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         camera.zoom = 0.8f;
         music = Gdx.audio.newMusic(Gdx.files.internal("back_music.mp3"));
@@ -86,36 +96,62 @@ public class GameScreen implements Screen {
 
     }
 
+    private Anim setAnimation(Anim anim) {
+        if (!this.animation.getFrame().isFlipX() && !lookRight) {
+            anim.getFrame().flip(true, false);
+        }
+        if (this.animation.getFrame().isFlipX() && lookRight) {
+            anim.getFrame().flip(true, false);
+        }
+        return anim;
+    }
+
     @Override
     public void render(float delta) {
 
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) body.applyForceToCenter(new Vector2(- 1000000, 0), true);
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) body.applyForceToCenter(new Vector2(1000000, 0), true);
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) body.applyForceToCenter(new Vector2(0, 10000000), true);
-        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) camera.position.y -= STEP;
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.P)) camera.zoom += 0.1f;
-        if (Gdx.input.isKeyJustPressed(Input.Keys.O) && camera.zoom > 0) camera.zoom -= 0.1f;
-
-        camera.position.x = body.getPosition().x;
-        camera.position.y = body.getPosition().y;
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && physX.myContList.isOnGround()) {
+            if (physX.myContList.isOnGround()) animation = setAnimation(animationRun);
+            lookRight = false;
+            body.applyForceToCenter(new Vector2(-2f, 0), true);
+        }else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && physX.myContList.isOnGround()) {
+            if (physX.myContList.isOnGround()) animation = setAnimation(animationRun);
+            lookRight = true;
+            body.applyForceToCenter(new Vector2(2f, 0), true);
+        } else if (Gdx.input.isKeyPressed(Input.Keys.UP) && physX.myContList.isOnGround()) {
+            animation = setAnimation(animationJump);
+            body.applyForceToCenter(new Vector2(0, 15f), true);
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
+            camera.position.y -= STEP;
+        } else if(physX.myContList.isOnGround()) {
+            animation = setAnimation(animationStand);
+        }
+        camera.position.x = body.getPosition().x * physX.PPM;
+        camera.position.y = body.getPosition().y * physX.PPM;
         camera.update();
         ScreenUtils.clear(0.69f, 0.88f, 0.97f, 1);
 
         animation.setTime(Gdx.graphics.getDeltaTime());
 
+
+        heroRect.x = body.getPosition().x - heroRect.width / 2;
+        heroRect.y = body.getPosition().y - heroRect.height / 2;
+
         mapRenderer.setView(camera);
         mapRenderer.render(bg);
-
         mapRenderer.render(l1);
 
-        batch.setProjectionMatrix(camera.combined);
-        heroRect.x = body.getPosition().x - heroRect.width/2;
-        heroRect.y = body.getPosition().y - heroRect.height/2;
-        batch.begin();
-        batch.draw(animation.getFrame(), heroRect.x, heroRect.y, heroRect.width, heroRect.height);
-        batch.end();
+        if (Gdx.input.isKeyJustPressed(Input.Keys.P)) camera.zoom += 0.1f;
+        if (Gdx.input.isKeyJustPressed(Input.Keys.O) && camera.zoom > 0) camera.zoom -= 0.1f;
 
+        float x = Gdx.graphics.getWidth()/2 - heroRect.getWidth()/2/camera.zoom;
+        float y = Gdx.graphics.getHeight()/2 - heroRect.getHeight()/2/camera.zoom;
+        Sprite spr = new Sprite(animation.getFrame());
+        spr.setOriginCenter();
+        spr.scale(0f);
+        spr.setPosition(x, y);
+        batch.begin();
+        spr.draw(batch);
+        batch.end();
         physX.step();
         physX.debugDraw(camera);
 
@@ -151,5 +187,8 @@ public class GameScreen implements Screen {
     public void dispose() {
         this.batch.dispose();
         this.animation.dispose();
+        this.animationStand.dispose();
+        this.animationJump.dispose();
+        this.animationRun.dispose();
     }
 }
