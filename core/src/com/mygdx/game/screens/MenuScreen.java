@@ -29,11 +29,12 @@ public class MenuScreen implements Screen {
         img = new Texture("play.png");
         startRect = new Rectangle(0, 0, img.getWidth(), img.getHeight());
         shapeRenderer = new ShapeRenderer();
-        music = Gdx.audio.newMusic(Gdx.files.internal("menu_music.mp3"));
+
+
+        music = Gdx.audio.newMusic(Gdx.files.internal("menu_audio.mp3"));
         music.setLooping(true);
         music.setVolume(0.5f);
         music.play();
-
         soundOut = Gdx.audio.newSound(Gdx.files.internal("SoundOut.mp3"));
     }
 

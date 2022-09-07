@@ -23,7 +23,6 @@ import com.mygdx.game.Main;
 import com.mygdx.game.PhysX;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 
 public class GameScreen implements Screen {
@@ -55,14 +54,11 @@ public class GameScreen implements Screen {
         //animation = new Anim("mesomorph.png", 9, 6, Animation.PlayMode.LOOP, 7,8,9);
         animation = new Anim("atlas/unnamed.atlas", Animation.PlayMode.LOOP);
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.zoom = 0.5f;
-        music = Gdx.audio.newMusic(Gdx.files.internal("game_music.mp3"));
+        camera.zoom = 0.8f;
+        music = Gdx.audio.newMusic(Gdx.files.internal("back_music.mp3"));
         music.setLooping(true);
         music.setVolume(0.5f);
         music.play();
-
-
-
 
         map = new TmxMapLoader().load("map/Tiles_map_project.tmx");
         mapRenderer = new OrthogonalTiledMapRenderer(map);
@@ -108,21 +104,8 @@ public class GameScreen implements Screen {
 
         animation.setTime(Gdx.graphics.getDeltaTime());
 
-
-
-
         mapRenderer.setView(camera);
         mapRenderer.render(bg);
-
-
-//        shapeRenderer.setProjectionMatrix(camera.combined);
-//        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-//        shapeRenderer.setColor(Color.YELLOW);
-//        for (int i = 0; i < objects.size; i++) {
-//            Rectangle mapSize = objects.get(i).getRectangle();
-//            shapeRenderer.rect(mapSize.x, mapSize.y, mapSize.width, mapSize.height);
-//        }
-//        shapeRenderer.end();
 
         mapRenderer.render(l1);
 
@@ -135,6 +118,7 @@ public class GameScreen implements Screen {
 
         physX.step();
         physX.debugDraw(camera);
+
 
         for (int i = 0; i < bodies.size(); i++) {
             physX.destroyBody(bodies.get(i));
