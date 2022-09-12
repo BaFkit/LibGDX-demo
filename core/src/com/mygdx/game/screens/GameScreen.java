@@ -112,14 +112,14 @@ public class GameScreen implements Screen {
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && physX.myContList.isOnGround()) {
             if (physX.myContList.isOnGround()) animation = setAnimation(animationRun);
             lookRight = false;
-            body.applyForceToCenter(new Vector2(-2f, 0), true);
+            body.applyForceToCenter(new Vector2(-1.5f, 0), true);
         }else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && physX.myContList.isOnGround()) {
             if (physX.myContList.isOnGround()) animation = setAnimation(animationRun);
             lookRight = true;
-            body.applyForceToCenter(new Vector2(2f, 0), true);
+            body.applyForceToCenter(new Vector2(1.5f, 0), true);
         } else if (Gdx.input.isKeyPressed(Input.Keys.UP) && physX.myContList.isOnGround()) {
             animation = setAnimation(animationJump);
-            body.applyForceToCenter(new Vector2(0, 15f), true);
+            body.applyForceToCenter(new Vector2(0, 12f), true);
         } else if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
             camera.position.y -= STEP;
         } else if(physX.myContList.isOnGround()) {
