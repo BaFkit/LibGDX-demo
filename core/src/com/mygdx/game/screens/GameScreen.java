@@ -4,7 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -20,6 +22,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.game.Anim;
+import com.mygdx.game.Font;
 import com.mygdx.game.Main;
 import com.mygdx.game.PhysX;
 
@@ -44,6 +47,12 @@ public class GameScreen implements Screen {
     private final Music music;
     private final int[] bg;
     private final int[] l1;
+    private final Texture imgChest;
+    private int score;
+    private final Font font;
+    private final Array<RectangleMapObject> objects;
+    private final Array<Rectangle> chests;
+    private final int amount;
 
     public static ArrayList<Body> bodies;
 
@@ -54,9 +63,13 @@ public class GameScreen implements Screen {
 
     public GameScreen(Main game) {
         bodies = new ArrayList<>();
+        imgChest = new Texture("chest.png");
         this.game = game;
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
+        font = new Font(28);
+        font.setColor(Color.DARK_GRAY);
+        amount = 5;
 
         animationStand = new Anim("atlas/Atlas.atlas", "stand", 1/5f, Animation.PlayMode.LOOP);
         animationRun = new Anim("atlas/Atlas.atlas", "run", 1/5f, Animation.PlayMode.LOOP);
@@ -85,9 +98,15 @@ public class GameScreen implements Screen {
         heroRect = tmp.getRectangle();
         body = physX.addObject(tmp);
 
-        Array<RectangleMapObject> objects = map.getLayers().get("Объекты").getObjects().getByType(RectangleMapObject.class);
+        objects = map.getLayers().get("Объекты").getObjects().getByType(RectangleMapObject.class);
         for (int i = 0; i < objects.size; i++) {
             physX.addObject(objects.get(i));
+        }
+        chests = new Array<>();
+        for (int i = 0; i < objects.size; i++) {
+            if (objects.get(i).getName().equals("Chest")) {
+                chests.add(objects.get(i).getRectangle());
+            }
         }
     }
 
@@ -109,11 +128,11 @@ public class GameScreen implements Screen {
     @Override
     public void render(float delta) {
 
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && physX.myContList.isOnGround()) {
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             if (physX.myContList.isOnGround()) animation = setAnimation(animationRun);
             lookRight = false;
             body.applyForceToCenter(new Vector2(-1.5f, 0), true);
-        }else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && physX.myContList.isOnGround()) {
+        }else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             if (physX.myContList.isOnGround()) animation = setAnimation(animationRun);
             lookRight = true;
             body.applyForceToCenter(new Vector2(1.5f, 0), true);
@@ -130,7 +149,6 @@ public class GameScreen implements Screen {
         camera.update();
         ScreenUtils.clear(0.69f, 0.88f, 0.97f, 1);
 
-        animation.setTime(Gdx.graphics.getDeltaTime());
 
 
         heroRect.x = body.getPosition().x - heroRect.width / 2;
@@ -140,26 +158,41 @@ public class GameScreen implements Screen {
         mapRenderer.render(bg);
         mapRenderer.render(l1);
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.P)) camera.zoom += 0.1f;
-        if (Gdx.input.isKeyJustPressed(Input.Keys.O) && camera.zoom > 0) camera.zoom -= 0.1f;
-
         float x = Gdx.graphics.getWidth()/2 - heroRect.getWidth()/2/camera.zoom;
         float y = Gdx.graphics.getHeight()/2 - heroRect.getHeight()/2/camera.zoom;
         Sprite spr = new Sprite(animation.getFrame());
         spr.setOriginCenter();
         spr.scale(0f);
         spr.setPosition(x, y);
+        animation.setTime(Gdx.graphics.getDeltaTime());
         batch.begin();
         spr.draw(batch);
         batch.end();
+
+        batch.begin();
+        for (int i = 0; i < chests.size; i++) {
+            x = Gdx.graphics.getWidth()/2 + (chests.get(i).x - camera.position.x) / camera.zoom;
+            y = Gdx.graphics.getHeight()/2 + (chests.get(i).y - camera.position.y) / camera.zoom;
+            batch.draw(imgChest, x, y, chests.get(i).width, chests.get(i).height);
+        }
+        batch.end();
+
+        batch.begin();
+        font.render(batch, "Chests collected: " + String.valueOf(score), 0, Gdx.graphics.getHeight());
+        batch.end();
+
         physX.step();
         physX.debugDraw(camera);
 
-
         for (int i = 0; i < bodies.size(); i++) {
             physX.destroyBody(bodies.get(i));
+            score++;
         }
         bodies.clear();
+
+        if(score == amount) {
+            game.setScreen(new GameScreen(game));
+        }
     }
 
     @Override
@@ -183,6 +216,7 @@ public class GameScreen implements Screen {
 
     }
 
+
     @Override
     public void dispose() {
         this.batch.dispose();
@@ -190,5 +224,6 @@ public class GameScreen implements Screen {
         this.animationStand.dispose();
         this.animationJump.dispose();
         this.animationRun.dispose();
+        this.imgChest.dispose();
     }
 }

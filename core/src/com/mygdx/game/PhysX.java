@@ -5,6 +5,9 @@ import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.utils.Array;
+
+import java.util.Iterator;
 
 public class PhysX {
     private final World world;
@@ -52,6 +55,13 @@ public class PhysX {
         polygonShape.dispose();
         return body;
     }
+
+//    public Array<Body> getBodies(String name){
+//        Array<Body> b = new Array<>();
+//        world.getBodies(b);
+//        Iterator<Body> it = b.iterator();
+//        return b;
+//    }
 
     public void setGravity(Vector2 gravity) {world.setGravity(gravity);}
 
