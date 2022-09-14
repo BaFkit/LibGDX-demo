@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="23">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="45">
  <tileset firstgid="1" name="map_tiles" tilewidth="16" tileheight="16" spacing="2" margin="2" tilecount="1350" columns="54">
   <image source="map_tiles.png" trans="b0e0f8" width="982" height="452"/>
   <tile id="637">
@@ -19,21 +19,21 @@
    <property name="BodyType" value="StaticBody"/>
    <property name="gravityScale" type="float" value="1"/>
   </properties>
-  <object id="6" name="Wall" x="2.06127" y="513.076" width="1023.82" height="44">
+  <object id="6" name="Wall" x="165.061" y="513.076" width="714.82" height="44">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="gravityScale" type="float" value="1"/>
     <property name="restitution" type="float" value="0"/>
    </properties>
   </object>
-  <object id="7" name="Wall" x="702.789" y="420.894" width="82" height="110">
+  <object id="7" name="Wall" x="707.039" y="414.144" width="77.75" height="116.75">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="gravityScale" type="float" value="1"/>
     <property name="restitution" type="float" value="0"/>
    </properties>
   </object>
-  <object id="8" name="Wall" x="703.15" y="408.603" width="194.458" height="9.92967">
+  <object id="8" name="Wall" x="706.9" y="408.603" width="190.708" height="9.92967">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="gravityScale" type="float" value="1"/>
@@ -47,14 +47,161 @@
     <property name="restitution" type="float" value="0"/>
    </properties>
   </object>
-  <object id="12" name="Chest" x="392.789" y="469.894" width="41" height="40">
+  <object id="12" name="Chest" x="392.789" y="489.894" width="24" height="20">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="gravityScale" type="float" value="1"/>
     <property name="restitution" type="float" value="0"/>
    </properties>
   </object>
-  <object id="22" name="Chest" x="660.789" y="468.894" width="41" height="40">
+  <object id="22" name="Chest" x="621.789" y="488.894" width="24" height="22">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="24" name="Wall" x="661.432" y="468.09" width="44.7136" height="45.6078">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="25" name="Wall" x="337.432" y="465.09" width="47.7136" height="45.6078">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="26" name="Chest" x="41.7885" y="274.894" width="24" height="20">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="27" name="Chest" x="964.789" y="326.894" width="24" height="20">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="28" name="Chest" x="789.789" y="488.894" width="24" height="20">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="29" name="Wall" x="961.432" y="522.09" width="46.7136" height="11.6078">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="30" name="Wall" x="899.432" y="346.09" width="92.7136" height="11.6078">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="31" name="Wall" x="546.432" y="378.09" width="92.7136" height="11.6078">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="32" name="Wall" x="403.432" y="363.09" width="92.7136" height="11.6078">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="33" name="Wall" x="200.432" y="330.09" width="88.7136" height="11.6078">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="34" name="Wall" x="35.4317" y="298.09" width="92.7136" height="11.6078">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="35" name="Wall" x="674.932" y="433.09" width="29.9636" height="30.8578">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="36" name="Wall" x="4.37854" y="754.894" width="1020.82" height="12">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="37" name="Wall" x="14.8449" y="30.3666" width="735.915" height="12" rotation="89.7603">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="42" name="Wall" x="1024.84" y="30.3666" width="735.915" height="12" rotation="89.7603">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="38" name="Wall" x="-341.169" y="356.894" width="735.915" height="12" rotation="89.7603">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="39" name="Wall" x="-287.169" y="381.894" width="735.915" height="12" rotation="89.7603">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="40" name="Wall" x="-229.169" y="373.894" width="735.915" height="12" rotation="89.7603">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="41" name="Wall" x="-317.169" y="382.894" width="735.915" height="12" rotation="89.7603">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="43" name="Chest" x="308.789" y="490.894" width="24" height="20">
+   <properties>
+    <property name="BodyType" value="StaticBody"/>
+    <property name="gravityScale" type="float" value="1"/>
+    <property name="restitution" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="44" name="Chest" x="971.789" y="502.894" width="24" height="20">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="gravityScale" type="float" value="1"/>
@@ -73,7 +220,7 @@
  </objectgroup>
  <layer id="1" name="Слой 2" width="64" height="48">
   <data encoding="base64" compression="zlib">
-   eJztmF1KA0EQhDvZB++g3sLfYxivoQbUd8ldFNTDLOTnOXoO36wHBxppJ9vQM7tr6oMisGRqqmY6IUSE7DOHjcgRdNzYzz1KHtZa7d/FO+flzZPLdAXNoOtf/dNzj5KHtVb7d/HOeXnzdMlEyMVE5HLSd4r+uEP3eUD/sZ7jMzK/GLm9fTznWOKsoj29c/HXOUZ49+Hp6TME75J5NbU/50P7XikxuyX3iz6/WnMWtV/t+xoate+LEEIIIeQ/ssTvqRW03uPfVQfTenvdNCK3HTWv9P9uZP9d83SPTg9Kj41vfYmM0fef83tF3zeld+OOa8yj3qNUf+sut+j7ofQ5kP4660Ypwluza/6tNSWwMqbXkv37mv9WKe3xpHp/TfP9W4dy/a35P8F7TqEz6PwnRyuxLLHPClqPQMi5QN5F8BEQQgghhBBCCCGj5Ru295Jb
+   eJztmU1OAkEQhRtmwR3UW4g/x1CvoZIge8NdNEEPMwngGj2HO2tBJ5VJzUwXVv8MvC95IZnQ1e91FWQm4xw4Zc4q585JF5V8XSNfQ1rL64fU7qql9dPl6Y50T3po5PfXNfI1pLW8fkjtrlpaPyGeALgZOXc7yu0iH8+UfWaQf6jn+Eae3wXf2jyac4xxVtY1tXPRdo4WtXPU1OQpoXZMv5zUv/PS/ldizG7M/azPL9WcWe2Xul+lkbpfAAyFvmf2YwfPx2FgToY1JyX0K6eHEvoV4qGEPh3Cmu6nNqTtP++rSujToUzG6fZ6pDN5CtQs0flZ5u+bpzllemFaVLr1MTxa91+q53OvSB9Mn0KPU8wj3yNWfn7OPveO9M30U0h+7vWLyaL2nM163/w318dC6r//tM6/YrOea/5rJr/HK8v9O+7OXyvUzL9jsy7N/yV9Z0q6Il3vfdTOljXtsyFtByDyuSS/SylH2/vuU6HtfTcAAAAAAAAAgOPmD9TQqU4=
   </data>
  </layer>
  <layer id="4" name="Слой 3" width="64" height="48">
